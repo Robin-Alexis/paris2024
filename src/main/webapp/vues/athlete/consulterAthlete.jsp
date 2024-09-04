@@ -7,6 +7,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="sio.paris2024.model.Athlete"%>
 <%@page import="sio.paris2024.model.Pays"%>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.Period" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,8 +24,13 @@
     <body>
         <%
                 Athlete a = (Athlete)request.getAttribute("pAthlete");
+                
+                LocalDate dateAujourdhui = LocalDate.now(); 
+                LocalDate DateNaissance = a.getDateNaiss();
+                int age = 0;
+                age = Period.between(DateNaissance, dateAujourdhui).getYears();
         %>
-        <h1><%  out.println(a.getNom());%></h1>
+        <h1><%  out.println(a.getNom());%> <%  out.println(a.getPrenom());%></h1>
             
                          
             <table>
@@ -30,7 +38,13 @@
                 <td>Id: </td><td><%  out.println(a.getId());%></td>
             </tr>
             <tr>
+                <td>Date de Naissance: </td><td><%  out.println(a.getDateNaiss());%></td>
+            </tr>
+            <tr>
                 <td>Pays : </td><td><%  out.println(a.getPays().getNom());%></td>
+            </tr>
+             <tr>
+                <td>Âge : </td><td><% out.println(age + " ans"); %></td> <!-- Affichage de l'âge -->
             </tr>
         </table>
 </html>
