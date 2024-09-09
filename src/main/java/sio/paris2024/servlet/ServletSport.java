@@ -16,8 +16,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sio.paris2024.database.DaoEpreuve;
 import sio.paris2024.database.DaoSport;
+import sio.paris2024.model.Epreuve;
 import sio.paris2024.model.Sport;
+
 
 /**
  *
@@ -91,6 +94,21 @@ public class ServletSport extends HttpServlet {
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/sport/listerSport.jsp").forward(request, response);
         }  
+        
+        if(url.equals("/paris2024/ServletSport/consulter"))
+        { 
+            int idSport = Integer.parseInt((String)request.getParameter("idSport"));
+            
+            ArrayList<Epreuve> lesEpreuves = null;
+            try {
+                lesEpreuves = DaoEpreuve.getLesEpreuvesSportById(cnx, idSport);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletSport.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            request.setAttribute("pLesEpreuves", lesEpreuves);
+            //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
+           getServletContext().getRequestDispatcher("/vues/sport/consulterSport.jsp").forward(request, response);
+        }
     }
 
     /**
