@@ -31,6 +31,10 @@
         <servlet-name>ServletSport</servlet-name>
         <url-pattern>/ServletSport</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSport</servlet-name>
+        <url-pattern>/ServletSport/consulter</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
