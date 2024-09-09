@@ -22,6 +22,10 @@
         <servlet-name>ServletAthlete</servlet-name>
         <url-pattern>/ServletAthlete/ajouter</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSport</servlet-name>
+        <url-pattern>/ServletSport/lister</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
