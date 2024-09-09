@@ -17,6 +17,8 @@ public class Athlete {
     private Pays pays ;
     private String prenom;
     private LocalDate dateNaiss;
+    private Sport sport;
+ 
     public Athlete() {
     }
 
@@ -72,4 +74,12 @@ public class Athlete {
     public void setDateNaiss(LocalDate dateNaiss) {
         this.dateNaiss = dateNaiss;
     }       
+
+    public Sport getSport() {
+        return sport;
+    }
+
+    public void setSport(Sport sport) {
+        this.sport = sport;
+    }
 }
