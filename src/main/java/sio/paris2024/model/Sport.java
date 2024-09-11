@@ -20,6 +20,10 @@ public class Sport {
     public Sport() {
     }
 
+    public Sport(int id) {
+        this.id = id;
+    }
+
     public Sport(int id, String nom) {
         this.id = id;
         this.nom = nom;
