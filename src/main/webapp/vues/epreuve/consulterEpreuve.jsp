@@ -1,11 +1,11 @@
 <%-- 
-    Document   : consulterSport.jsp
-    Created on : 9 sept. 2024, 14:07:07
+    Document   : consulterEpreuve.jsp
+    Created on : 11 sept. 2024, 09:02:10
     Author     : SIO2
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="sio.paris2024.model.Epreuve"%>
+<%@page import="sio.paris2024.model.Athlete"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
@@ -15,28 +15,33 @@
     </head>
     <body>
         <%
-                ArrayList<Epreuve> lesEpreuves = (ArrayList)request.getAttribute("pLesEpreuves");
+                ArrayList<Athlete> lesAthletes = (ArrayList)request.getAttribute("pLesAthletes");
         %>            
        
              <table>  
                 <thead>
                     <tr>             
                         <th>id</th>
-                        <th>nom</th>           
+                        <th>nom</th>      
+                        <th>prenom</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <%
-                            for (Epreuve e : lesEpreuves)
+                            for (Athlete a : lesAthletes)
                             {              
                                 out.println("<tr><td>");
-                                out.println(e.getId());
+                                out.println(a.getId());
                                 out.println("</td>");
 
-                                out.println("<td><a href ='../ServletEpreuve/consulter?idEpreuve="+ e.getId()+ "'>");
-                                out.println(e.getNom());
-                                out.println("</a></td>");;      
+                                out.println("<td>");
+                                out.println(a.getNom());
+                                out.println("</td>");;     
+                                
+                                out.println("<td>");
+                                out.println(a.getPrenom());
+                                out.println("</td>");;    
                             }
                         %>
                     </tr>
