@@ -17,7 +17,11 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sio.paris2024.database.DaoEpreuve;
+import sio.paris2024.database.DaoSport;
+import sio.paris2024.form.FormEpreuve;
 import sio.paris2024.model.Athlete;
+import sio.paris2024.model.Epreuve;
+import sio.paris2024.model.Sport;
 
 /**
  *
@@ -98,6 +102,14 @@ public class ServletEpreuve extends HttpServlet {
             //System.out.println("lister eleves - nombres d'élèves récupérés" + lesEleves.size() );
            getServletContext().getRequestDispatcher("/vues/epreuve/consulterEpreuve.jsp").forward(request, response);
         }
+        
+        if(url.equals("/paris2024/ServletEpreuve/ajouter"))
+        {                   
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
+            this.getServletContext().getRequestDispatcher("/vues/epreuve/ajouterEpreuve.jsp" ).forward( request, response );
+        }
+        
     }
 
     /**
@@ -111,7 +123,36 @@ public class ServletEpreuve extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        FormEpreuve form = new FormEpreuve();
+		
+        /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
+        Epreuve epv = form.ajouterEpreuve(request);
+        
+        /* Stockage du formulaire et de l'objet dans l'objet request */
+        request.setAttribute( "form", form );
+        request.setAttribute( "pEpreuve", epv );
+		
+        if (form.getErreurs().isEmpty()){
+            Epreuve epreuveInsere =  DaoEpreuve.addEpreuve(cnx, epv);
+            if (epreuveInsere != null ){
+                request.setAttribute( "pEpreuve", epreuveInsere );
+                getServletContext().getRequestDispatcher("/vues/epreuve/consulterEpreuve.jsp").forward(request, response);
+            }
+            else 
+            {
+                // Cas oùl'insertion en bdd a échoué
+                //renvoyer vers une page d'erreur 
+            }
+           
+        }
+        else
+        { 
+            // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
+            this.getServletContext().getRequestDispatcher("/vues/epreuve/ajouterEpreuve.jsp" ).forward( request, response );
+        }
     }
 
     /**
