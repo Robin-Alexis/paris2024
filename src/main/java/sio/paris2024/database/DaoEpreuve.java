@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import sio.paris2024.model.Athlete;
 import sio.paris2024.model.Epreuve;
 
 /**
@@ -45,5 +46,31 @@ public class DaoEpreuve {
                 System.out.println("La requête de getLesEpreuvesSportById a généré une erreur");
             }
             return lesEpreuves;
+    }
+    
+    public static ArrayList<Athlete> getLesAthletesEpreuveById(Connection cnx, int idEpreuve) throws SQLException{
+        ArrayList<Athlete> lesAthletes = new ArrayList<Athlete>();
+        try{
+            requeteSql = cnx.prepareStatement("SELECT a.id as a_id, a.nom as a_nom, a.prenom as a_prenom FROM athlete a \n" +
+                        "INNER JOIN athlete_epreuve ae ON ae.athlete_id = a.id " +
+                        "INNER JOIN epreuve e ON ae.epreuve_id = e.id " +
+                        "WHERE e.id = ?;");
+            requeteSql.setInt(1, idEpreuve);
+            resultatRequete = requeteSql.executeQuery();
+            
+            while(resultatRequete.next()){
+                Athlete a = new Athlete();
+                a.setId(resultatRequete.getInt("a_id"));
+                a.setNom(resultatRequete.getString("a_nom"));
+                a.setPrenom(resultatRequete.getString("a_prenom"));
+                
+                lesAthletes.add(a);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("La requête de getLesAthletesEpreuveById a généré une erreur");
+        }
+        return lesAthletes;
     }
 }
