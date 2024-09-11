@@ -1,50 +1,47 @@
-<%-- 
-    Document   : consulterEpreuve.jsp
-    Created on : 11 sept. 2024, 09:02:10
-    Author     : SIO2
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="sio.paris2024.model.Athlete"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="sio.paris2024.model.Athlete"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>PARIS 2024</title>
+        <title>Consulter Epreuve</title>
     </head>
     <body>
+        <h1>Liste des Athlètes de l'Épreuve</h1>
+        
         <%
-                ArrayList<Athlete> lesAthletes = (ArrayList)request.getAttribute("pLesAthletes");
-        %>            
-       
-             <table>  
+            ArrayList<Athlete> lesAthletes = (ArrayList<Athlete>) request.getAttribute("pLesAthletes");
+            if (lesAthletes != null && !lesAthletes.isEmpty()) {
+        %>
+            <table>
                 <thead>
-                    <tr>             
-                        <th>id</th>
-                        <th>nom</th>      
-                        <th>prenom</th>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <%
-                            for (Athlete a : lesAthletes)
-                            {              
-                                out.println("<tr><td>");
-                                out.println(a.getId());
-                                out.println("</td>");
-
-                                out.println("<td>");
-                                out.println(a.getNom());
-                                out.println("</td>");;     
-                                
-                                out.println("<td>");
-                                out.println(a.getPrenom());
-                                out.println("</td>");;    
-                            }
-                        %>
-                    </tr>
+                    <% 
+                        for (Athlete a : lesAthletes) { 
+                    %>
+                        <tr>
+                            <td><%= a.getId() %></td>
+                            <td><%= a.getNom() %></td>
+                            <td><%= a.getPrenom() %></td>
+                        </tr>
+                    <% 
+                        } 
+                    %>
                 </tbody>
             </table>
+        <%
+            } else {
+        %>
+            <p>Aucun athlète n'est associé à cette épreuve.</p>
+        <%
+            }
+        %>
+    </body>
 </html>
