@@ -5,10 +5,12 @@
 package sio.paris2024.form;
 
 import jakarta.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import sio.paris2024.model.Athlete;
 import sio.paris2024.model.Pays;
+import sio.paris2024.model.Sport;
 
 /**
  *
@@ -61,7 +63,13 @@ public class FormAthlete {
         Athlete ath  = new Athlete();
          
         String nom = getDataForm( request, "nom" );
+        String prenom = getDataForm( request, "prenom" );
+        
+        String dateNaissanceStr = getDataForm(request, "dateNaiss");
+        LocalDate dateNaissance = LocalDate.parse(dateNaissanceStr);
+
         int idPays = Integer.parseInt((String)getDataForm( request, "idPays" ));
+        int idSport = Integer.parseInt((String)getDataForm( request, "idSport"));
        
       
         try {
@@ -70,6 +78,8 @@ public class FormAthlete {
             setErreur( "nom", e.getMessage() );
         }
         ath.setNom(nom);
+        ath.setPrenom(prenom);
+        ath.setDateNaiss(dateNaissance);
 
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de l'ajout.";
@@ -80,7 +90,9 @@ public class FormAthlete {
       
      
         Pays p = new Pays(idPays);
+        Sport s = new Sport(idSport);
         ath.setPays(p);
+        ath.setSport(s);
         
         return ath ;
     }

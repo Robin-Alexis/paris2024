@@ -17,10 +17,12 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import sio.paris2024.database.DaoAthlete;
+import sio.paris2024.database.DaoSport;
 import sio.paris2024.database.DaoPays;
 import sio.paris2024.form.FormAthlete;
 import sio.paris2024.model.Athlete;
 import sio.paris2024.model.Pays;
+import sio.paris2024.model.Sport;
 
 /**
  *
@@ -108,6 +110,10 @@ public class ServletAthlete extends HttpServlet {
         {                   
             ArrayList<Pays> lesPays = DaoPays.getLesPays(cnx);
             request.setAttribute("pLesPays", lesPays);
+            
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
+            
             this.getServletContext().getRequestDispatcher("/vues/athlete/ajouterAthlete.jsp" ).forward( request, response );
         }
         
@@ -154,6 +160,11 @@ public class ServletAthlete extends HttpServlet {
             // il y a des erreurs. On réaffiche le formulaire avec des messages d'erreurs
             ArrayList<Pays> lesCasernes = DaoPays.getLesPays(cnx);
             request.setAttribute("pLesPays", lesCasernes);
+            
+            ArrayList<Sport> lesSports = DaoSport.getLesSports(cnx);
+            request.setAttribute("pLesSports", lesSports);
+            
+            
             this.getServletContext().getRequestDispatcher("/vues/athlete/ajouterAthlete.jsp" ).forward( request, response );
         }
         
