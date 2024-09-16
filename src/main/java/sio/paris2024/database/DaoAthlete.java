@@ -28,7 +28,7 @@ public class DaoAthlete {
         
         ArrayList<Athlete> lesAthletes = new ArrayList<Athlete>();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.nom as a_nom, a.prenom as a_prenom, a.datenaiss as a_datenaiss, p.id as p_id, p.nom as p_nom " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.nom as a_nom, a.prenom as a_prenom, a.datenaiss as a_datenaiss, p.id as p_id, p.nom as p_nom, a.urlImage as a_urlImage " +
                          " from athlete a inner join pays p " +
                          " on a.pays_id = p.id ");
             //System.out.println("REQ="+ requeteSql);
@@ -49,6 +49,8 @@ public class DaoAthlete {
                    p.setNom(resultatRequete.getString("p_nom"));
                 
                     a.setPays(p);
+                    
+                    a.setUrlImage(resultatRequete.getString("a_urlImage"));
                 
                 lesAthletes.add(a);
             }
@@ -65,7 +67,7 @@ public class DaoAthlete {
         
         Athlete a = new Athlete();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.nom as a_nom, a.prenom as a_prenom, a.datenaiss as a_datenaiss, p.id as p_id, p.nom as p_nom " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.nom as a_nom, a.prenom as a_prenom, a.datenaiss as a_datenaiss, p.id as p_id, p.nom as p_nom, a.urlImage as a_urlImage " +
                          " from athlete a inner join pays p " +
                          " on a.pays_id = p.id " + 
                          " where a.id = ? ");
@@ -87,13 +89,15 @@ public class DaoAthlete {
                    p.setNom(resultatRequete.getString("p_nom"));
                 
                     a.setPays(p);
+                    
+                   a.setUrlImage(resultatRequete.getString("a_urlImage"));
                 
             }
            
         }
         catch (SQLException e){
             e.printStackTrace();
-            System.out.println("La requête de getLesPompiers e généré une erreur");
+            System.out.println("La requête de getAthleteById e généré une erreur");
         }
         return a;
     }
@@ -106,8 +110,8 @@ public class DaoAthlete {
             // id (clé primaire de la table athlete) est en auto_increment,donc on ne renseigne pas cette valeur
             // la paramètre RETURN_GENERATED_KEYS est ajouté à la requête afin de pouvoir récupérer l'id généré par la bdd (voir ci-dessous)
             // supprimer ce paramètre en cas de requête sans auto_increment.
-            requeteSql=connection.prepareStatement("INSERT INTO athlete (nom, prenom, datenaiss, pays_id, sport_id)\n" +
-                    "VALUES (?,?,?,?,?)", requeteSql.RETURN_GENERATED_KEYS );
+            requeteSql=connection.prepareStatement("INSERT INTO athlete (nom, prenom, datenaiss, pays_id, sport_id, urlImage)\n" +
+                    "VALUES (?,?,?,?,?,?)", requeteSql.RETURN_GENERATED_KEYS );
             requeteSql.setString(1, ath.getNom());      
             requeteSql.setString(2, ath.getPrenom());
             LocalDate dateNaissance = ath.getDateNaiss();
@@ -115,6 +119,7 @@ public class DaoAthlete {
             requeteSql.setDate(3,dateNaiss);
             requeteSql.setInt(4, ath.getPays().getId());
             requeteSql.setInt(5, ath.getSport().getId());
+            requeteSql.setString(6, ath.getUrlImage()); // Ajouter l'URL de l'image
 
 
            /* Exécution de la requête */

@@ -11,6 +11,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,6 +34,12 @@ import sio.paris2024.model.Sport;
  * @author zakina
  */
 public class ServletAthlete extends HttpServlet {
+    
+    private static final long serialVersionUID = 1L;
+
+    public static final int TAILLE_TAMPON = 10240;
+    public static final String CHEMIN_FICHIERS = "C:\\Users\\SIO2\\Documents\\Robin Alexis\\B2\\ANNOUCHE\\JO2024\\paris2024\\src\\main\\webapp\\vues\\images\\"; // A changer
+    
     
     Connection cnx ;
             
@@ -133,10 +144,27 @@ public class ServletAthlete extends HttpServlet {
             throws ServletException, IOException {
              
         
-         FormAthlete form = new FormAthlete();
+        FormAthlete form = new FormAthlete();
 		
         /* Appel au traitement et à la validation de la requête, et récupération du bean en résultant */
         Athlete ath = form.ajouterAthlete(request);
+        
+         // On récupère le champ du fichier
+        Part part = request.getPart("fichier");
+            
+        // On vérifie qu'on a bien reçu un fichier
+        String nomFichier = getNomFichier(part);
+        
+        // Si on a bien un fichier
+        if (nomFichier != null && !nomFichier.isEmpty()) {
+        // Traitement du fichier
+            nomFichier = nomFichier.substring(nomFichier.lastIndexOf('/') + 1)
+                   .substring(nomFichier.lastIndexOf('\\') + 1);
+            ecrireFichier(part, nomFichier, CHEMIN_FICHIERS);
+
+            // Stocker le nom du fichier dans l'objet ath
+            ath.setUrlImage(nomFichier);
+        }
         
         /* Stockage du formulaire et de l'objet dans l'objet request */
         request.setAttribute( "form", form );
@@ -175,6 +203,49 @@ public class ServletAthlete extends HttpServlet {
         
         
     }
+    
+        
+    private void ecrireFichier(Part part, String nomFichier, String chemin) throws IOException {
+        BufferedInputStream entree = null;
+        BufferedOutputStream sortie = null;
+        try {
+            entree = new BufferedInputStream(part.getInputStream(), TAILLE_TAMPON);
+            sortie = new BufferedOutputStream(new FileOutputStream(new File(chemin + nomFichier)), TAILLE_TAMPON);
+
+            byte[] tampon = new byte[TAILLE_TAMPON];
+            int longueur;
+            while ((longueur = entree.read(tampon)) > 0) {
+                sortie.write(tampon, 0, longueur);
+            }
+        } finally {
+            // Assurez-vous de fermer les flux dans le bloc finally pour éviter les fuites de ressources
+            if (sortie != null) {
+                try {
+                    sortie.close();
+                } catch (IOException e) {
+                    // Log l'erreur
+                    e.printStackTrace();
+                }
+            }
+            if (entree != null) {
+                try {
+                    entree.close();
+                } catch (IOException e) {
+                    // Log l'erreur
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private static String getNomFichier( Part part ) {
+        for ( String contentDisposition : part.getHeader( "content-disposition" ).split( ";" ) ) {
+            if ( contentDisposition.trim().startsWith( "filename" ) ) {
+                return contentDisposition.substring( contentDisposition.indexOf( '=' ) + 1 ).trim().replace( "\"", "" );
+            }
+        }
+        return null;
+    }   
 
     /**
      * Returns a short description of the servlet.
