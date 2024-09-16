@@ -23,17 +23,17 @@
                 FormAthlete form = (FormAthlete)request.getAttribute("form");
             %>
         
-        <form class="form-inline" action="ajouter" method="POST">
+        <form class="form-inline" action="ajouter" method="POST" enctype="multipart/form-data">
                 <label for="nom">NOM : </label>
-                <input id="nom" type="text" name="nom"  size="30" maxlength="30">
+                <input id="nom" type="text" name="nom"  size="30" maxlength="30" required>
                 </br>
                 
                 <label for="prenom">PRENOM : </label>
-                <input id="prenom" type="text" name="prenom"  size="30" maxlength="30">
+                <input id="prenom" type="text" name="prenom"  size="30" maxlength="30" required>
                 </br>
                 
                 <label for="dateNaiss">Date Naissance</label>
-                <input id="dateNaiss" type="date" name="dateNaiss" class="form-control">
+                <input id="dateNaiss" type="date" name="dateNaiss" required>
                 </br>
                             
                 <%-- Champ Liste des pays --%>
@@ -61,6 +61,12 @@
                     %>
                 </select>
                 </br>
+                
+                <label for="fichier">Image de l'athlète : </label>
+                <input type="file" name="fichier" id="fichier" required/>
+                </br>
+                
+                
                                
             <input type="submit" name="valider" id="valider" value="Valider"/>
             </form>
