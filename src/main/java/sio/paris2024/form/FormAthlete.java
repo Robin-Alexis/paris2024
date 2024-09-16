@@ -58,43 +58,73 @@ public class FormAthlete {
     }
     
     
-    public Athlete ajouterAthlete( HttpServletRequest request ) {
-      
-        Athlete ath  = new Athlete();
-         
-        String nom = getDataForm( request, "nom" );
-        String prenom = getDataForm( request, "prenom" );
-        
-        String dateNaissanceStr = getDataForm(request, "dateNaiss");
-        LocalDate dateNaissance = LocalDate.parse(dateNaissanceStr);
+    public Athlete ajouterAthlete(HttpServletRequest request) {
+        Athlete ath = new Athlete();
 
-        int idPays = Integer.parseInt((String)getDataForm( request, "idPays" ));
-        int idSport = Integer.parseInt((String)getDataForm( request, "idSport"));
-       
-      
-        try {
-             validationNom( nom );
-        } catch ( Exception e ) {
-            setErreur( "nom", e.getMessage() );
+        String nom = getDataForm(request, "nom");
+        String prenom = getDataForm(request, "prenom");
+
+        String dateNaissanceStr = getDataForm(request, "dateNaiss");
+        LocalDate dateNaissance = null;
+
+        if (dateNaissanceStr != null && !dateNaissanceStr.isEmpty()) {
+            try {
+                dateNaissance = LocalDate.parse(dateNaissanceStr);
+            } catch (Exception e) {
+                setErreur("dateNaiss", "La date de naissance est invalide.");
+            }
+        } else {
+            setErreur("dateNaiss", "Veuillez renseigner une date de naissance.");
         }
+
+        // Vérification pour idPays
+        String idPaysStr = getDataForm(request, "idPays");
+        int idPays = 0; // Valeur par défaut, si nécessaire
+        if (idPaysStr != null && !idPaysStr.isEmpty()) {
+            try {
+                idPays = Integer.parseInt(idPaysStr);
+            } catch (NumberFormatException e) {
+                setErreur("idPays", "Le pays sélectionné est invalide.");
+            }
+        } else {
+            setErreur("idPays", "Veuillez sélectionner un pays.");
+        }
+
+        // Vérification pour idSport
+        String idSportStr = getDataForm(request, "idSport");
+        int idSport = 0; // Valeur par défaut, si nécessaire
+        if (idSportStr != null && !idSportStr.isEmpty()) {
+            try {
+                idSport = Integer.parseInt(idSportStr);
+            } catch (NumberFormatException e) {
+                setErreur("idSport", "Le sport sélectionné est invalide.");
+            }
+        } else {
+            setErreur("idSport", "Veuillez sélectionner un sport.");
+        }
+
+        try {
+            validationNom(nom);
+        } catch (Exception e) {
+            setErreur("nom", e.getMessage());
+        }
+
         ath.setNom(nom);
         ath.setPrenom(prenom);
         ath.setDateNaiss(dateNaissance);
 
-        if ( erreurs.isEmpty() ) {
+        if (erreurs.isEmpty()) {
             resultat = "Succès de l'ajout.";
         } else {
             resultat = "Échec de l'ajout.";
         }
-         
-      
-     
+
         Pays p = new Pays(idPays);
         Sport s = new Sport(idSport);
         ath.setPays(p);
         ath.setSport(s);
-        
-        return ath ;
+
+        return ath;
     }
-    
+
 }
