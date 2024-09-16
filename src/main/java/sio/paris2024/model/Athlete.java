@@ -18,6 +18,7 @@ public class Athlete {
     private Pays pays ;
     private String prenom;
     private LocalDate dateNaiss;
+    private String urlImage; // Ajoutez cet attribut
     private Sport sport;
     private ArrayList<Epreuve> lesEpreuves;
  
@@ -29,12 +30,13 @@ public class Athlete {
         this.nom = nom;
     }
 
-    public Athlete(int id, String nom, Pays pays, String prenom, LocalDate dateNaiss) {
+    public Athlete(int id, String nom, Pays pays, String prenom, LocalDate dateNaiss, String urlImage) {
         this.id = id;
         this.nom = nom;
         this.pays = pays;
         this.prenom = prenom;
         this.dateNaiss = dateNaiss;
+        this.urlImage = urlImage;
     }
 
     public int getId() {
@@ -98,5 +100,13 @@ public class Athlete {
             lesEpreuves = new ArrayList<Epreuve>();
         }
         lesEpreuves.add(uneEpreuve);
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 }
