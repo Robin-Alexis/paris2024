@@ -14,6 +14,7 @@ public class Sport {
     
     private int id;
     private String nom ;
+    private String urlImage;
     private ArrayList<Athlete> lesAthletes;
     private ArrayList<Epreuve> lesEpreuves;
 
@@ -24,9 +25,10 @@ public class Sport {
         this.id = id;
     }
 
-    public Sport(int id, String nom) {
+    public Sport(int id, String nom, String urlImage) {
         this.id = id;
         this.nom = nom;
+        this.urlImage = urlImage;
     }
 
     public int getId() {
@@ -60,11 +62,11 @@ public class Sport {
         lesAthletes.add(unAthlete);
     }
 
-    public ArrayList<Epreuve> getLsEpreuves() {
+    public ArrayList<Epreuve> getLesEpreuves() {
         return lesEpreuves;
     }
-
-    public void setLsEpreuves(ArrayList<Epreuve> lsEpreuves) {
+    
+    public void setLesEpreuves(ArrayList<Epreuve> lsEpreuves) {
         this.lesEpreuves = lsEpreuves;
     }
     
@@ -73,5 +75,13 @@ public class Sport {
             lesEpreuves = new ArrayList<Epreuve>();
         }
         lesEpreuves.add(uneEpreuve);
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 }

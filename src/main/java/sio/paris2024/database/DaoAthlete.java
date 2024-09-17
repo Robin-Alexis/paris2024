@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import sio.paris2024.model.Athlete;
 import sio.paris2024.model.Pays;
+import sio.paris2024.model.Sport;
 
 /**
  *
@@ -28,9 +29,11 @@ public class DaoAthlete {
         
         ArrayList<Athlete> lesAthletes = new ArrayList<Athlete>();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.nom as a_nom, a.prenom as a_prenom, a.datenaiss as a_datenaiss, p.id as p_id, p.nom as p_nom, a.urlImage as a_urlImage " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.nom as a_nom, a.prenom as a_prenom, a.datenaiss as a_datenaiss, p.id as p_id, p.nom as p_nom, p.urlImage as p_urlImage, a.urlImage as a_urlImage, s.id as s_id, s.nom as s_nom, s.urlImage as s_urlImage " +
                          " from athlete a inner join pays p " +
-                         " on a.pays_id = p.id ");
+                         " on a.pays_id = p.id" +
+                         " inner join sport s" +
+                         " on a.sport_id = s.id");
             //System.out.println("REQ="+ requeteSql);
             resultatRequete = requeteSql.executeQuery();
             
@@ -43,14 +46,23 @@ public class DaoAthlete {
                    
                    Date date = resultatRequete.getDate("a_datenaiss");
                    a.setDateNaiss(date.toLocalDate());
+                   
+                   a.setUrlImage(resultatRequete.getString("a_urlImage"));
                     
                    Pays p = new Pays();
                    p.setId(resultatRequete.getInt("p_id"));
                    p.setNom(resultatRequete.getString("p_nom"));
+                   p.setUrlImage(resultatRequete.getString("p_urlImage"));
                 
                     a.setPays(p);
                     
-                    a.setUrlImage(resultatRequete.getString("a_urlImage"));
+                    a.setUrlImage(resultatRequete.getString("a_urlImage"));                    
+                   Sport s = new Sport();
+                   s.setId(resultatRequete.getInt("s_id"));
+                   s.setNom(resultatRequete.getString("s_nom"));
+                   s.setUrlImage(resultatRequete.getString("s_urlImage"));
+                   
+                   a.setSport(s);
                 
                 lesAthletes.add(a);
             }
@@ -67,7 +79,7 @@ public class DaoAthlete {
         
         Athlete a = new Athlete();
         try{
-            requeteSql = cnx.prepareStatement("select a.id as a_id, a.nom as a_nom, a.prenom as a_prenom, a.datenaiss as a_datenaiss, p.id as p_id, p.nom as p_nom, a.urlImage as a_urlImage " +
+            requeteSql = cnx.prepareStatement("select a.id as a_id, a.nom as a_nom, a.prenom as a_prenom, a.datenaiss as a_datenaiss, p.id as p_id, p.nom as p_nom, p.urlImage as p_urlImage, a.urlImage as a_urlImage " +
                          " from athlete a inner join pays p " +
                          " on a.pays_id = p.id " + 
                          " where a.id = ? ");
@@ -87,6 +99,7 @@ public class DaoAthlete {
                    Pays p = new Pays();
                    p.setId(resultatRequete.getInt("p_id"));
                    p.setNom(resultatRequete.getString("p_nom"));
+                   p.setUrlImage(resultatRequete.getString("p_urlImage"));
                 
                     a.setPays(p);
                     

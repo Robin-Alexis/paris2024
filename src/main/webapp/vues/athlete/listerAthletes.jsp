@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="sio.paris2024.model.Athlete"%>
 <%@page import="sio.paris2024.model.Pays"%>
+<%@page import="sio.paris2024.model.Sport"%>
 <%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
@@ -42,6 +43,7 @@
                         <th>date naissance</th>
                         <th>pays</th>
                         <th>image</th>
+                        <th>Sport</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,16 +51,19 @@
                         ArrayList<Athlete> lesAthletes = (ArrayList<Athlete>) request.getAttribute("pLesAthletes");
                         for (Athlete a : lesAthletes) {
                             String imageName = a.getUrlImage();
+                            String imagePays = a.getPays().getUrlImage();
+                            String imageSport = a.getSport().getUrlImage();
                     %>
                     <tr>
                         <td><%= a.getId() %></td>
                         <td><a href='../ServletAthlete/consulter?idAthlete=<%= a.getId() %>'><%= a.getNom() %></a></td>
                         <td><%= a.getPrenom() %></td>
                         <td><%= a.getDateNaiss() %></td>
-                        <td><%= a.getPays().getNom() %></td>
+                        <td><img src="<%= request.getContextPath() %>/vues/images/<%= imagePays %>" alt="<%= a.getPays().getNom() %>"/> <%= a.getPays().getNom() %></td>
                         <td>
                             <img src="<%= request.getContextPath() %>/vues/images/<%= imageName %>" alt="Photo de <%= a.getNom() %>"/>
                         </td>
+                        <td><img src="<%= request.getContextPath() %>/vues/images/<%= imageSport %>" alt="<%= a.getSport().getNom() %>"/> <%= a.getSport().getNom() %></td>
                     </tr>
                     <%
                         }

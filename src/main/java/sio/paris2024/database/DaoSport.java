@@ -35,6 +35,7 @@ public class DaoSport {
                 Sport s = new Sport();
                 s.setId(resultatRequete.getInt("id"));
                 s.setNom(resultatRequete.getString("nom"));
+                s.setUrlImage(resultatRequete.getString("urlImage"));
                 
                 lesSports.add(s);
             }

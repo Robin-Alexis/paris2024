@@ -13,14 +13,16 @@ import java.util.ArrayList;
 public class Pays {
     private int id;
     private String nom ;
+    private String urlImage;
     private ArrayList<Athlete> lesAthletes ;
 
     public Pays() {
     }
 
-    public Pays(int id, String nom) {
+    public Pays(int id, String nom, String urlImage) {
         this.id = id;
         this.nom = nom;
+        this.urlImage = urlImage;
     }
 
     public Pays(int id) {
@@ -58,5 +60,12 @@ public class Pays {
         }
         lesAthletes.add(a);
     }
-    
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
 }
