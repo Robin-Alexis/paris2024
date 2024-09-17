@@ -18,7 +18,7 @@ public class Athlete {
     private Pays pays ;
     private String prenom;
     private LocalDate dateNaiss;
-    private String urlImage; // Ajoutez cet attribut
+    private String urlImage;
     private Sport sport;
     private ArrayList<Epreuve> lesEpreuves;
  
