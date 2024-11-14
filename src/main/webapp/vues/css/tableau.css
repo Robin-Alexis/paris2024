@@ -1,0 +1,105 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 17 sept. 2024, 19:09:35
+    Author     : alexi
+*/
+
+/* Conteneur pour centrer le tableau */
+.table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Style du tableau des athlètes */
+.table-athletes {
+    width: 1240px;
+    border-collapse: collapse;
+}
+
+/* Style des en-têtes pour le tableau des athlètes */
+.table-athletes th {
+    background-color: transparent;
+    color: black;
+    padding: 20px;
+    text-align: left;
+}
+
+/* Style des cellules pour le tableau des athlètes */
+.table-athletes td {
+    font-size: 0.9rem;
+    padding: 5px;
+    text-align: left;
+    font-weight: normal;
+    position: relative;
+}
+
+/* Conteneur pour chaque ligne du tableau */
+.row-content {
+    position: relative;
+    padding-left: 10px; /* Ajoute un léger padding pour ne pas coller au bord */
+}
+
+/* Ajouter une barre noire de 1px sur la gauche pour les lignes blanches */
+.table-athletes tbody tr:nth-child(odd) .row-content::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    height: 122%;
+    width: 2px;
+    background-color: black;
+}
+
+/* Couleur alternée des lignes pour le tableau des athlètes */
+.table-athletes tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+.table-athletes tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-athletes th:first-child, /* Cible la première colonne (Nom) */
+.table-athletes td:first-child { /* Cible les cellules de la première colonne */
+    width: 650px; /* Tu peux ajuster la largeur selon tes besoins */
+    min-width: 200px; /* Optionnel : minimum pour éviter que la colonne se rétrécisse trop */
+}
+
+
+/* Style pour les images des athlètes */
+.athlete-img {
+    width: 35px; /* Ajuste la taille selon tes besoins */
+    height: 45px;
+    object-fit: cover; /* Pour s'assurer que l'image s'ajuste bien */
+    margin-right: 15px; /* Ajoute un espace entre l'image et le nom */
+    vertical-align: middle; /* Assure l'alignement vertical avec le texte */
+}
+
+.pays-img {
+    width: 30px; /* Ajuste la taille selon tes besoins */
+    height: 20px;
+    object-fit: cover; /* Pour s'assurer que l'image s'ajuste bien */
+    margin-right: 5px; /* Ajoute un espace entre l'image et le nom */
+    vertical-align: middle; /* Assure l'alignement vertical avec le texte */
+}
+
+.sport-img {
+    width: 30px; /* Ajuste la taille selon tes besoins */
+    height: 30px;
+    object-fit: cover; /* Pour s'assurer que l'image s'ajuste bien */
+    margin-right: 5px; /* Ajoute un espace entre l'image et le nom */
+    vertical-align: middle; /* Assure l'alignement vertical avec le texte */
+}
+
+.table-athletes td:nth-child(2) {
+    font-size: 0.9rem; /* Ajuste la taille de la police selon tes besoins */
+}
+
+/* Style des cellules pour la troisième colonne (Discipline) */
+.table-athletes td:nth-child(3) {
+    font-size: 0.9rem; /* Ajuste la taille de la police selon tes besoins */
+}

@@ -38,7 +38,7 @@ public class ServletAthlete extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public static final int TAILLE_TAMPON = 10240;
-    public static final String CHEMIN_FICHIERS = "C:\\Users\\SIO2\\Documents\\Robin Alexis\\B2\\ANNOUCHE\\JO2024\\paris2024\\src\\main\\webapp\\vues\\images\\"; // A changer
+    public static final String CHEMIN_FICHIERS = "C:\\Users\\alexi\\Desktop\\Projet JO2024\\paris2024\\src\\main\\webapp\\vues\\images\\"; // A changer
     
     
     Connection cnx ;

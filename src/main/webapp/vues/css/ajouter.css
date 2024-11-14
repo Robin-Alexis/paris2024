@@ -1,0 +1,57 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 19 sept. 2024, 16:24:15
+    Author     : alexi
+*/
+
+
+.container-ajouter {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;     /* Centre verticalement */
+    gap: 20px;               /* Espace entre les blocs */
+}
+
+.block-ajouter {
+    border-radius: 10px;
+    text-decoration: none;
+    width: 200px;
+    height: 270px;
+    border: 1.5px dashed black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    transition: 0.2s;
+}
+
+.block-ajouter:hover {
+    transform: scale(1.02);
+    transition: 0.2s;
+    background-color: rgba(66, 70, 75, 0.03)
+}
+
+    
+.content-ajouter {
+    text-align: center;
+}
+
+.content-ajouter h2 {
+    color: black;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-top: -100px;
+}
+
+.plus {
+    color: black;
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 20px;
+    font-size: 80px;
+    font-weight: 100;
+}
+

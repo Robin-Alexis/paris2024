@@ -1,0 +1,402 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 17 sept. 2024, 18:32:28
+    Author     : alexi
+*/
+
+/* styles.css */
+
+@font-face {
+    font-family:'Paris2024'; /* Le nom que vous allez utiliser dans le CSS */
+    src: url('../fonts/Paris2024-Variable.ttf') format('truetype'); /* Chemin vers le fichier de la police */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f9f9f9;
+}
+
+.navbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 260px; 
+    background: #3a83be;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.navbar-content {
+    font-family: "Poppins", system-ui;
+    font-weight: 300;
+    font-style: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+    padding: 0 20px;
+    position: relative;
+}
+
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links.left {
+    justify-content: flex-start;
+}
+
+.nav-links.right {
+    justify-content: flex-end;
+}
+
+.nav-links li {
+    margin: 0 5px;
+}
+
+.nav-links a {
+    border-radius: 18px;
+    padding: 8px 20px 8px 20px;
+    background-color: white;
+    font-size: 0.9rem;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logo {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    margin-left: -110px;
+}
+
+.logotaille {
+    width: 20.5%;
+}
+
+.titrenav {
+    margin-top: 40px;
+    font-family: 'Paris2024';
+    font-size: 2.5vw;
+    color: white;
+    width: 500px;
+    text-align: center;
+}
+
+
+main {
+    padding-top: 80px; 
+    margin-bottom: 150px;
+}
+
+
+.navbar-static .navbar-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 100%;
+}
+
+
+/* Main */
+
+.conteneur {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.rectangle {
+    width: 1240px;
+    height: 120px;
+    display: flex;
+    margin-bottom: 0; 
+}
+
+.partie {
+    flex: 1;
+}
+
+.partie h1 {
+    color: white;
+    font-family:'Paris2024';
+    font-weight: bold;
+    font-size: 3rem;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.partie:last-child {
+    border-right: none;
+}
+
+.block-tableau {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 1200px;
+    height: 810px;
+    background: linear-gradient(90deg, rgb(42, 109, 163) 0%, rgb(97, 207, 255) 100%);
+    padding: 20px; 
+}
+
+.tableau-container {
+    width: 100%;
+}
+
+.table-medaille {
+    margin-top: -20px;
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0 15px; 
+}
+
+
+.table-medaille td {
+    background-color: white;
+}
+
+.table-medaille th, .table-medaille td {
+    font-weight: normal;
+    padding: 18px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-medaille th {
+    color: white;
+    background-color: transparent;
+}
+
+.table-medaille th:nth-child(2) {
+    text-align: left;
+}
+
+.table-medaille td:nth-child(2) {
+    text-align: left;
+}
+
+.table-medaille td:nth-child(3), td:nth-child(1) {
+    font-weight: bold;
+}
+
+.or {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgb(252, 200, 97);
+}
+
+.argent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgb(229, 229, 229);
+}
+
+.bronze {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgb(220, 179, 134);
+}
+
+.table-medaille th div {
+    margin: 0 auto; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+}
+
+
+.table-medaille td:nth-child(1) {
+    width: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.table-medaille td:nth-child(6) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+.flag-icon {
+    width: 30px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+
+/* Section des médias */
+.media-container {
+    width: 1240px; 
+    height: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 5px; 
+}
+
+.media-title {
+    font-family: 'Paris2024'; 
+    font-size: 3rem;
+    color: black;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.media-title::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px; 
+    background-color: black;
+    margin-top: 10px; 
+}
+
+.media-blocks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 75%;
+}
+
+.media-block {
+    width: 32%; 
+    height: 100%; 
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.media-block iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.media-caption {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+    text-align: left;
+}
+
+.footer {
+    background-color: black; /* Couleur de fond du footer */
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* Distribution des éléments en ligne */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo img {
+    width: 100px; /* Taille du logo */
+}
+
+.footer-links {
+    margin-left: 115px;
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center;     /* Centrer verticalement */
+    height: 100%;            /* Assure que les éléments occupent toute la hauteur */
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px; /* Espacement entre les liens */
+}
+
+.footer-links li {
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime les padding */
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+    padding: 10px 0; /* Ajoute du padding vertical pour centrer les liens */
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-social a {
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.footer-social img {
+    width: 30px; /* Taille des icônes des réseaux sociaux */
+    transition: transform 0.2s ease;
+}
+
+.footer-social img:hover {
+    transform: scale(1.1); /* Effet d'agrandissement lors du survol */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.footer-separator {
+    border: none;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.407);
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.footer-text {
+    padding: 20px;
+    color: white;
+    margin: 0;
+}

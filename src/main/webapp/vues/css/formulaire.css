@@ -1,0 +1,179 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 19 sept. 2024, 23:46:15
+    Author     : alexi
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+
+/* Centrage général */
+body {
+    overflow-y: hidden;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "Poppins", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Conteneur du formulaire */
+.form-container {
+    margin-top: -20px;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 370px;
+}
+
+/* Style du logo */
+.logo {
+    width: 170px;
+    height: 170px;
+}
+
+/* Style du titre et du sous-titre */
+h1 {
+    margin: 0;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+}
+
+h2 {
+    margin: 0px 0 10px 0;
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Style des champs du formulaire */
+form input, form select {
+    width: 100%;
+    padding: 16px;
+    margin: 7px 0;
+    border: 1px solid #dedede;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+}
+
+
+/* Style du bouton */
+form .button {
+    position: relative; /* Nécessaire pour que la flèche soit bien placée */
+    text-align: left;
+    width: 50%;
+    padding: 6px 60px 6px 20px;
+    margin: 20px 0;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 40px;
+    font-family: "Poppins", system-ui;
+    font-weight: bold;
+    font-style: normal;
+    transition: 0.2s;
+}
+
+form .button:hover {
+    transition: 0.2s;
+    background-color: white; /* Changer l'arrière-plan en blanc */
+    color: black; /* Changer le texte en noir */
+    border: 1px solid #000; /* Ajouter une bordure noire */
+}
+
+/* Pour la couleur et la taille des placeholders */
+::placeholder {
+    color: black; /* Couleur du placeholder */
+    font-size: 14px; /* Taille du placeholder */
+    font-family: "Poppins", system-ui;
+    font-weight: 500;
+    font-style: normal;
+    text-transform: none; /* Convertir le texte en majuscules */
+}
+
+select {
+    color: grey;
+    font-family: "Poppins", system-ui;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px; /* Taille du placeholder */
+}
+
+select option[disabled] {
+    color: #b4b4b4;
+}
+
+select option {
+    color: black;
+}
+
+.custom-file-upload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.custom-file-upload label {
+    font-size: 14px;
+    display: block;
+    border: 1px solid #dedede;
+    background-color: #f7f7f7   ;
+    color: black;
+    padding: 14px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 92%;
+}
+
+/* Masquer le bouton de fichier original */
+.custom-file-upload input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+form input[name="nom"] {
+    text-transform: uppercase; /* Convertir le texte en majuscules */
+}
+
+/* Style de la flèche */
+.back-arrow {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    transform: rotate(90deg); /* Rotation de 90 degrés vers la gauche */
+}
+
+/* Style du texte "Retour" */
+.back-text {
+    font-size: 14px;
+    font-family: "Poppins", system-ui;
+    font-weight: 700;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}

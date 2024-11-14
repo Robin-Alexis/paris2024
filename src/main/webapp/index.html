@@ -1,10 +1,256 @@
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html lang="fr">
     <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PARIS 2024 - Actualités</title>
+        <link rel="stylesheet" href="vues/css/styles.css">
+        <link rel="icon" type="image/x-icon" href="vues/images/favicon.ico">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <nav class="navbar">
+            <div class="navbar-content">
+                <ul class="nav-links left" style="margin-top: 20px;">
+                    <li><a href="/paris2024/ServletAthlete/lister">ATHLÈTES</a></li>
+                    <li><a href="/paris2024/ServletSport/lister">SPORTS</a></li>
+                </ul>
+
+                <div class="logo">
+                    <a class="logotaille" href="index.html" >
+                        <img src="vues/images/emblem-oly.svg" alt="Logo">
+                    </a>
+                    <h1 class="titrenav">JEUX OLYMPIQUES</h1>
+                </div>
+
+                <ul class="nav-links right" style="margin-top: 20px;">
+                    <li><a href="/paris2024/vues/ajouter.html" class="btn-contact">AJOUTER</a></li>
+                </ul>
+
+                <div class="parallax-bg"></div>
+                <div class="parallax-bg2"></div>
+            </div>
+        </nav>
+
+        <nav class="navbar-static">
+            <div class="navbar-content">
+                <ul class="nav-links left">
+                    <li><a href="/paris2024/ServletAthlete/lister">ATHLÈTES</a></li>
+                    <li><a href="/paris2024/ServletSport/lister">SPORTS</a></li>
+                </ul>
+                <ul class="nav-links right">
+                    <li><a href="/paris2024/vues/ajouter.html" class="btn-contact">AJOUTER</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            <div class="conteneur">
+                <div class="rectangle">
+                    <div class="partie" style="background-image: url(vues/images/fondmedaille.png); background-position: cover; background-repeat: no-repeat; background-size: cover;border-top-left-radius: 5px;"><h1>MÉDAILLES</h1></div>
+                    <div class="partie" style="background: linear-gradient(90deg, rgb(42, 109, 163) 0%, rgb(97, 207, 255) 100%);"></div>
+                    <div class="partie" style="background: linear-gradient(90deg, rgb(42, 109, 163) 0%, rgb(97, 207, 255) 100%); border-top-right-radius: 5px;"></div>
+                </div>
+            
+                <div class="block-tableau">
+                    <div class="tableau-container">
+                        <table class="table-medaille">
+                            <tr>
+                                <th>#</th>
+                                <th>équipes/CNO</th>
+                                <th><div class="or" style="color:black;  width: 30px; height:30px;">O</div></th>
+                                <th><div class="argent" style="color:black; width: 30px; height:30px;">A</div></th>
+                                <th><div class="bronze" style="color:black; width: 30px; height:30px;">B</div></th>
+                                <th>TOTAL</th>
+
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><img src="vues/images/USA.png" alt="USA" class="flag-icon">États-Unis d'Amérique</td>
+                                <td>40</td>
+                                <td>44</td>
+                                <td>42</td>
+                                <td>126</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><img src="vues/images/CHN.png" alt="USA" class="flag-icon">République populaire de Chine</td>
+                                <td>40</td>
+                                <td>27</td>
+                                <td>24</td>
+                                <td>91</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><img src="vues/images/JPN.png" alt="USA" class="flag-icon">Japon</td>
+                                <td>20</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>45</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><img src="vues/images/AUS.png" alt="USA" class="flag-icon">Australie</td>
+                                <td>18</td>
+                                <td>19</td>
+                                <td>16</td>
+                                <td>53</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><img src="vues/images/FRA.png" alt="USA" class="flag-icon">France</td>
+                                <td>16</td>
+                                <td>26</td>
+                                <td>22</td>
+                                <td>64</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><img src="vues/images/NED.png" alt="USA" class="flag-icon">Pays-Bas</td>
+                                <td>15</td>
+                                <td>7</td>
+                                <td>12</td>
+                                <td>34</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><img src="vues/images/GBR.png" alt="USA" class="flag-icon">Grande-Bretagne</td>
+                                <td>14</td>
+                                <td>22</td>
+                                <td>29</td>
+                                <td>65</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td><img src="vues/images/KOR.png" alt="USA" class="flag-icon">République de Corée</td>
+                                <td>13</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>32</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td><img src="vues/images/ITA.png" alt="USA" class="flag-icon">Italie</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>15</td>
+                                <td>40</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td><img src="vues/images/GER.png " alt="USA" class="flag-icon">Allemagne</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>8</td>
+                                <td>33  </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="media-container">
+                <h2 class="media-title">MEILLEURS MOMENTS</h2>
+                <div class="media-blocks">
+                    <div class="media-block">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Tdx1OR4kgpg" 
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p class="media-caption">Finale 400m 4 nages (H) | Natation | Jeux Olympiques de PARIS 2024</p>
+                    </div>
+
+                    <div class="media-block">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/zW-ELjJvXJw" 
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p class="media-caption">Finale +100 KG | Judo | Jeux Olympqiques de PARIS 2024 - Le show Teddy Riner</p>
+                    </div>
+
+                    <div class="media-block">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ZvGEbJrdHIk" 
+                            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p class="media-caption">Magnifique doublé français en escrime : Apithy-Brunet en or au sabre face à Balzer</p>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        
+        <footer class="footer">
+            <div class="footer-content">
+                <!-- Logo à gauche -->
+                <div class="footer-logo">
+                    <img src="vues/images/emblem-oly.svg" alt="Logo Olympique" style="margin-top: 10px;">
+                </div>
+        
+                <!-- Liens au milieu -->
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="/paris2024/ServletAthlete/lister">Athlètes</a></li>
+                        <li><a href="/paris2024/ServletSport/lister">Sports</a></li>
+                        <li><a href="#">Sites</a></li>
+                        <li><a href="#">Épreuves</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Réseaux sociaux à droite -->
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/Paris2024" target="_blank"><img src="vues/images/icons8-facebook-nouveau.svg" alt="Facebook"></a>
+                    <a href="https://x.com/Paris2024" target="_blank"><img src="vues/images/icons8-x.svg" alt="Twitter"></a>
+                    <a href="https://www.instagram.com/paris2024" target="_blank"><img src="vues/images/icons8-instagram.svg" alt="Instagram"></a>
+                    <a href="https://www.youtube.com/@paris2024officiel" target="_blank"><img src="vues/images/icons8-youtube.svg" alt="YouTube"></a>
+                </div>
+            </div>
+            
+            <!-- Nouvelle section pour les droits réservés -->
+            <div class="footer-bottom">
+                <hr class="footer-separator">
+                <p class="footer-text">© 2024 All rights reserved</p>
+            </div>
+        </footer>
+        
+        <style>
+            .parallax-bg {
+                position: absolute;
+                top: -500px;
+                left: 0;
+                width: 117%;
+                height: 500%;
+                background: url('vues/images/bottom.svg') center center;
+                background-size: cover;
+                transform: translateZ(0);
+                will-change: transform;
+                z-index: -1;
+                pointer-events: none;
+            }
+
+            .parallax-bg2 {
+                position: absolute;
+                top: -400px;
+                left: 27px;
+                width: 100%;
+                height: 400%;
+                background: url('vues/images/top.svg') repeat center center;
+                background-size: cover;
+                transform: translateZ(0);
+                will-change: transform;
+                z-index: -1;
+                pointer-events: none;
+            }
+            
+            .navbar-static {
+                display: none; 
+                position: fixed;
+                justify-content: space-between;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 65px; 
+                background-image: url(vues/images/fond.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                z-index: 1000;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+
+        <script src="vues/script/script.js"></script>
     </body>
-</html>
+    </html>
