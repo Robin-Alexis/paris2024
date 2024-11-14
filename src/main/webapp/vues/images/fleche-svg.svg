@@ -1,0 +1,7 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+	<title>fleche-svg</title>
+	<style>
+		.s0 { fill: #000000 } 
+	</style>
+	<path class="s0" d="m10 17.9l6-4.4v-2.2l-5 3.7v-12.9h-2l0.1 12.9-5.1-3.7v2.2z"/>
+</svg>

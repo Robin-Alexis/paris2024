@@ -1,0 +1,95 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 17 sept. 2024, 20:06:07
+    Author     : alexi
+*/
+
+/* Style global pour centrer le conteneur */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-width: 1500px; 
+    margin: 0 auto; 
+    padding: 40px;
+}
+
+.card {
+    background-color: #f9f9f9;
+    border: 1.2px solid black;
+    border-radius: 5px;
+    display: flex;
+    padding: 10px;
+    text-align: left; 
+    flex-direction: row; 
+    align-items: center; 
+    gap: 20px; 
+    max-width: calc(30.33% - 40px);
+    margin: 10px;
+    box-sizing: border-box; 
+    width: 600px;
+}
+
+
+.card-image {
+    flex-shrink: 0;
+}
+
+.card-image img {
+    margin-top: 5px;
+    margin-left: 10px;
+    border: 2px solid black;
+    width: 55px;
+    height: auto; 
+    border-radius: 4px;
+}
+
+
+.card-text {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.card-text h2 {
+    margin: 0;
+    font-size: 1.2em; 
+}
+
+.card-text a {
+    margin: 0;
+    color: #262626; 
+    font-size: 0.9em;
+}
+
+/* Pour les petits écrans, ajuster les cards */
+@media (max-width: 900px) {
+    .card {
+        flex: 1 1 calc(50% - 40px); /* 2 cards par ligne */
+        max-width: calc(50% - 40px);
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        flex: 1 1 100%; /* Une seule card par ligne */
+        max-width: 100%;
+        flex-direction: column; /* Disposer les éléments en colonne sur petits écrans */
+        align-items: center; /* Centrer les éléments horizontalement */
+        text-align: center; /* Aligner le texte au centre */
+    }
+
+    .card-image img {
+        max-width: 100%; /* Ajuster la taille de l'image pour petits écrans */
+    }
+
+    .card-text {
+        margin-top: 10px; /* Ajouter un espace au-dessus du texte */
+    }
+}

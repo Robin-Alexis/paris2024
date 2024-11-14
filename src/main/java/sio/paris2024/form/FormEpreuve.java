@@ -58,7 +58,7 @@ public class FormEpreuve {
       
         Epreuve epv  = new Epreuve();
          
-        String nom = getDataForm( request, "nom" );
+        String nom = getDataForm( request, "nomepreuve" );
         int idSport = Integer.parseInt((String)getDataForm( request, "idSport" ));
        
       

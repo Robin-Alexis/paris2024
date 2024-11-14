@@ -3,11 +3,16 @@
     <listener>
         <listener-class>sio.paris2024.database.InitConnexion</listener-class>
     </listener>
+    
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+    
     <servlet>
         <servlet-name>ServletAthlete</servlet-name>
         <servlet-class>sio.paris2024.servlet.ServletAthlete</servlet-class>
         <multipart-config>
-            <location>C:\Users\SIO2\Documents\Robin Alexis\B2\ANNOUCHE\JO2024\paris2024\src\main\webapp\vues\images\</location> <!-- A adapter chez vous -->
+            <location>C:\Users\alexi\Desktop\Projet JO2024\paris2024\src\main\webapp\vues\images\</location> <!-- A adapter chez vous -->
             <max-file-size>10485760</max-file-size> <!-- 10 Mo -->
             <max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
             <file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
